@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('FotoController', function($scope, $routeParams, recursoFoto){
+angular.module('alurapic').controller('FotoController', function($scope, cadastraFotos, $routeParams, recursoFoto){
 	
 	$scope.foto = {};
 	$scope.mensagem = '';
@@ -26,45 +26,64 @@ angular.module('alurapic').controller('FotoController', function($scope, $routeP
 
 	$scope.submeter = function () {
 		if($scope.formulario.$valid) {
-			if($scope.foto._id) {
+			
+			cadastraFotos.cadastrar($scope.foto)
+			.then(function(dados){
+				$scope.mensagem = dados.mensagem;
+				if(dados.inclusao) {
+					$scope.foto = {};
+					$scope.formulario.$setPristine();
+				}
+			})
+			.catch(function(erro){
+				$scope.mensagem = erro.mensagem;
+			}) 
 
-				recursoFoto.update({fotoId: $scope.foto._id}, $scope.foto, function(){
-					$scope.mensagem = 'Foto' + $scope.foto.titulo + 'foi removida com sucesso';
-				}, function(erro){
-					console.log(erro);
-					$scope.mensagem = 'Não foi possível remover a foto' + $scope.foto.titulo;
-				});
 
-				/*$http.put('v1/fotos/' + $scope.foto._id, $scope.foto)
-				.success(function(fotos){
-					$scope.mensagem = 'Foto' + $scope.foto.titulo + 'foi removida com sucesso';
-				})
-				.error(function(erro){
-					console.log(erro);
-					$scope.mensagem = 'Não foi possível remover a foto' + $scope.foto.titulo;
-				});*/
+			/*if($scope.foto._id) {
+
+				//v2
+				// recursoFoto.update({fotoId: $scope.foto._id}, $scope.foto, function(){
+				// 	$scope.mensagem = 'Foto' + $scope.foto.titulo + 'foi removida com sucesso';
+				// }, function(erro){
+				// 	console.log(erro);
+				// 	$scope.mensagem = 'Não foi possível remover a foto' + $scope.foto.titulo;
+				// });
+
+				//v1
+				// $http.put('v1/fotos/' + $scope.foto._id, $scope.foto)
+				// .success(function(fotos){
+				// 	$scope.mensagem = 'Foto' + $scope.foto.titulo + 'foi removida com sucesso';
+				// })
+				// .error(function(erro){
+				// 	console.log(erro);
+				// 	$scope.mensagem = 'Não foi possível remover a foto' + $scope.foto.titulo;
+				// });
 
 			} else {
-				recursoFoto.save({fotoId: $scope.foto._id}, function() {
-					$scope.foto = {};
-					$scope.formulario.$setPristine();
-					$scope.mensagem = 'Foto cadastrada com sucesso!';
-				}, function(erro){
-					$scope.mensagem = 'Não foi possível cadastrar a foto';
-					console.log(error);
-				});
+
+				//v2
+				// recursoFoto.save({fotoId: $scope.foto._id}, function() {
+				// 	$scope.foto = {};
+				// 	$scope.formulario.$setPristine();
+				// 	$scope.mensagem = 'Foto cadastrada com sucesso!';
+				// }, function(erro){
+				// 	$scope.mensagem = 'Não foi possível cadastrar a foto';
+				// 	console.log(error);
+				// });
 				
-				/*$http.post('v1/fotos', $scope.foto)
-				.success(function(){
-					$scope.foto = {};
-					$scope.formulario.$setPristine();
-					$scope.mensagem = 'Foto cadastrada com sucesso!';
-				})
-				.error(function(error){
-					$scope.mensagem = 'Não foi possível cadastrar a foto';
-					console.log(error);
-				});*/
-			}
+				//v1
+				// $http.post('v1/fotos', $scope.foto)
+				// .success(function(){
+				// 	$scope.foto = {};
+				// 	$scope.formulario.$setPristine();
+				// 	$scope.mensagem = 'Foto cadastrada com sucesso!';
+				// })
+				// .error(function(error){
+				// 	$scope.mensagem = 'Não foi possível cadastrar a foto';
+				// 	console.log(error);
+				// });
+			}*/
 		}
 
 	}
