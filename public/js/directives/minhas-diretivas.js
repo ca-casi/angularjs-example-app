@@ -46,17 +46,26 @@ angular.module('minhasDiretivas', [])
     var ddo = {};
 
     ddo.restrict = "A";
-    ddo.scope = {
-        focused: '=' //tanto a diretiva e o controller poden alterar este valor
-    };
+
+    //v1
+    // ddo.scope = {
+    //     focused: '=' //tanto a diretiva e o controller poden alterar este valor
+    // };
 
     ddo.link = function(scope, element){
-        scope.$watch('focused', function(){
+        
+        //v2 
+        scope.$on('fotoCadastrada', function() {
+            element[0].focus();
+        });
+
+        //v1
+        /*scope.$watch('focused', function(){
             if(scope.focused) {
                 element[0].focus();
                 scope.focused = false;
             }
-        });
+        });*/
     };
 
     return ddo;

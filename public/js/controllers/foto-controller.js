@@ -33,7 +33,8 @@ angular.module('alurapic').controller('FotoController', function($scope, cadastr
 				if(dados.inclusao) {
 					$scope.foto = {};
 					$scope.formulario.$setPristine();
-					$scope.focused = true;
+					//$scope.focused = true;
+					
 				}
 			})
 			.catch(function(erro){
