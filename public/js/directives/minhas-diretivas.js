@@ -41,6 +41,25 @@ angular.module('minhasDiretivas', [])
     ddo.template = ' <button ng-click="acao(foto)" class="btn btn-danger btn-block">{{nome}}</button>';           
 
     return ddo;
+})
+.directive('applyFocus', function(){
+    var ddo = {};
+
+    ddo.restrict = "A";
+    ddo.scope = {
+        focused: '=' //tanto a diretiva e o controller poden alterar este valor
+    };
+
+    ddo.link = function(scope, element){
+        scope.$watch('focused', function(){
+            if(scope.focused) {
+                element[0].focus();
+                scope.focused = false;
+            }
+        });
+    };
+
+    return ddo;
 });
 
 // <meu-painel titulo="Gambiarra"></meu-painel>
