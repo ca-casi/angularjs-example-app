@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="alurapic">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Alurapic</title>
+        <base href="/">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/estilo.css">
+        <link rel="stylesheet" type="text/css" href="css/efeitos.css">
+        <script type="text/javascript" src="js/lib/angular.min.js"></script>
+        <script type="text/javascript" src="js/lib/angular-animate.min.js"></script>
+        <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+        <script type="text/javascript" src="js/lib/angular-resource.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/controllers/fotos-controller.js"></script>
+        <script type="text/javascript" src="js/controllers/foto-controller.js"></script>
+        <script type="text/javascript" src="js/controllers/grupos-controller.js"></script>
+        <script type="text/javascript" src="js/directives/minhas-diretivas.js"></script>
+        <script type="text/javascript" src="js/directives-casi/directiv-casi.js"></script>
+        <script type="text/javascript" src="js/services/app-services.js"></script>
+    </head>
+    <body ng-controller="FotosController">
+        <div class="container">
+            <ng-view></ng-view>
+        </div>
+    </body>
+</html>
