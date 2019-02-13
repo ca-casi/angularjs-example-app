@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('FotosController', function($scope, recursoFoto){
+angular.module('alurapic').controller('FotosController', function($scope, recursoFoto, ngDialog){
 	
 	$scope.fotos = [];
 	$scope.filtro = '';
@@ -27,7 +27,11 @@ angular.module('alurapic').controller('FotosController', function($scope, recurs
 			console.log(erro);
 			$scope.mensagem = 'Nã foi possível remover a foto' + foto.titulo;
 		});
-	};
+  };
+  
+  $scope.openModal = function() {
+    ngDialog.open();
+  };
 
 	/*var promise = $http.get('v1/fotos');
 	promise.then(function(retorno){

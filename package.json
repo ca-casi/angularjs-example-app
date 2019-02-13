@@ -1,11 +1,13 @@
 {
-  "name": "alurapic",
+  "name": "photoapp",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack-dev-server --progress --colors"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +15,13 @@
     "body-parser": "^1.12.3",
     "express": "^4.12.3",
     "nedb": "^1.1.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-livereload-plugin": "^2.2.0"
   }
 }
