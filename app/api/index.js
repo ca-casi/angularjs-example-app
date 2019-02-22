@@ -71,8 +71,6 @@ api.listaGrupos = function(req, res) {
             nome: 'animais'
         }
     ]);
-        
 };
-
 
 module.exports = api;
